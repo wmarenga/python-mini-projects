@@ -1,5 +1,6 @@
 from tkinter import*
 from random import choice
+import secrets
 import string
 
 class App:
@@ -29,10 +30,10 @@ class App:
         password_generator.pack()
 
     def generate_password(self):
-        characters = string.ascii_letters + string.punctuation + string.digits
+        characters = str(secrets.token_bytes(q)) + string.ascii_letters + str(secrets.token_urlsafe(q)) + string.digits + str(secrets.token_hex(q)) + string.punctuation
         password = ""
         for x in range(28):
-            password+=choice(characters)
+            password+=secrets.choice(characters)
         self.password_entry.delete(0, END)
         self.password_entry.insert(0, password)
         
